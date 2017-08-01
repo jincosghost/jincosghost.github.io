@@ -1,0 +1,548 @@
+[
+  {
+    "arcana": "major",
+    "suit": "major",
+    "number": 0,
+    "name": "The Fool",
+    "description": "Beginning; Spontaneity; Faith; Apparent Folly"
+  },
+  {
+    "arcana": "major",
+    "suit": "major",
+    "number": 1,
+    "name": "The Magician",
+    "description": "Action; Conscious Awareness; Concentration; Power"
+  },
+  {
+    "arcana": "major",
+    "suit": "major",
+    "number": 2,
+    "name": "The High Priestess",
+    "description": "Non-Action; Unconscious Awareness; Potential; Mystery"
+  },
+  {
+    "arcana": "major",
+    "suit": "major",
+    "number": 3,
+    "name": "The Empress",
+    "description": "Motherhood; Abundance; Senses; Nature"
+  },
+  {
+    "arcana": "major",
+    "suit": "major",
+    "number": 4,
+    "name": "The Emperor",
+    "description": "Fatherhood; Structure; Authority; Regulation"
+  },
+  {
+    "arcana": "major",
+    "suit": "major",
+    "number": 5,
+    "name": "The Hierophant",
+    "description": "Education; Belief Systems; Conformity; Group Identification"
+  },
+  {
+    "arcana": "major",
+    "suit": "major",
+    "number": 6,
+    "name": "The Lovers",
+    "description": "Relationship; Sexuality; Personal Beliefs; Values"
+  },
+  {
+    "arcana": "major",
+    "suit": "major",
+    "number": 7,
+    "name": "The Chariot",
+    "description": "Victory; Will; Self-Assertion; Hard Control"
+  },
+  {
+    "arcana": "major",
+    "suit": "major",
+    "number": 8,
+    "name": "Strength",
+    "description": "Strength; Patience; Compassion; Soft Control"
+  },
+  {
+    "arcana": "major",
+    "suit": "major",
+    "number": 9,
+    "name": "The Hermit",
+    "description": "Introspection; Searching; Guidance; Solitude"
+  },
+  {
+    "arcana": "major",
+    "suit": "major",
+    "number": 10,
+    "name": "Wheel of Fortune",
+    "description": "Destiny; Turning Point; Movement; Personal Vision"
+  },
+  {
+    "arcana": "major",
+    "suit": "major",
+    "number": 11,
+    "name": "Justice",
+    "description": "Justice; Responsibility; Decision; Cause and Effect"
+  },
+  {
+    "arcana": "major",
+    "suit": "major",
+    "number": 12,
+    "name": "The Hanged Man",
+    "description": "Letting Go; Reversal; Suspension; Sacrifice"
+  },
+  {
+    "arcana": "major",
+    "suit": "major",
+    "number": 13,
+    "name": "Death",
+    "description": "Ending; Transition; Elimination; Inexorable Forces"
+  },
+  {
+    "arcana": "major",
+    "suit": "major",
+    "number": 14,
+    "name": "Temperance",
+    "description": "Temperance; Balance; Health; Combination"
+  },
+  {
+    "arcana": "major",
+    "suit": "major",
+    "number": 15,
+    "name": "The Devil",
+    "description": "Bondage; Materialism; Ignorance; Hopelessness"
+  },
+  {
+    "arcana": "major",
+    "suit": "major",
+    "number": 16,
+    "name": "The Tower",
+    "description": "Sudden Change; Release; Downfall; Revelation"
+  },
+  {
+    "arcana": "major",
+    "suit": "major",
+    "number": 17,
+    "name": "The Star",
+    "description": "Hope; Inspiration; Generosity; Serenity"
+  },
+  {
+    "arcana": "major",
+    "suit": "major",
+    "number": 18,
+    "name": "The Moon",
+    "description": "Fear; Illusion; Imagination; Bewilderment"
+  },
+  {
+    "arcana": "major",
+    "suit": "major",
+    "number": 19,
+    "name": "The Sun",
+    "description": "Enlightenment; Greatness; Vitality; Assurance"
+  },
+  {
+    "arcana": "major",
+    "suit": "major",
+    "number": 20,
+    "name": "Judgement",
+    "description": "Judgment; Rebirth; Inner Calling; Absolution"
+  },
+  {
+    "arcana": "major",
+    "suit": "major",
+    "number": 21,
+    "name": "The World",
+    "description": "Integration; Accomplishment; Involvement; Fulfillment"
+  },
+  {
+    "arcana": "minor",
+    "suit": "cups",
+    "number": 1,
+    "name": "Ace of cups",
+    "description": "Emotional Force Intuition Intimacy Love"
+  },
+  {
+    "arcana": "minor",
+    "suit": "cups",
+    "number": 2,
+    "name": "Two of cups",
+    "description": "Connection Truce Attraction"
+  },
+  {
+    "arcana": "minor",
+    "suit": "cups",
+    "number": 3,
+    "name": "Three of cups",
+    "description": "Exuberance Friendship Community"
+  },
+  {
+    "arcana": "minor",
+    "suit": "cups",
+    "number": 4,
+    "name": "Four of cups",
+    "description": "Self-Absorption Apathy Going Within"
+  },
+  {
+    "arcana": "minor",
+    "suit": "cups",
+    "number": 5,
+    "name": "Five of cups",
+    "description": "Loss Bereavement Regret"
+  },
+  {
+    "arcana": "minor",
+    "suit": "cups",
+    "number": 6,
+    "name": "Six of cups",
+    "description": "Good Will Innocence Childhood"
+  },
+  {
+    "arcana": "minor",
+    "suit": "cups",
+    "number": 7,
+    "name": "Seven of cups",
+    "description": "Wishful Thinking Options Dissipation"
+  },
+  {
+    "arcana": "minor",
+    "suit": "cups",
+    "number": 8,
+    "name": "Eight of cups",
+    "description": "Deeper Meaning Moving On Weariness"
+  },
+  {
+    "arcana": "minor",
+    "suit": "cups",
+    "number": 9,
+    "name": "Nine of cups",
+    "description": "Wish Fulfillment Satisfaction Sensual Pleasure"
+  },
+  {
+    "arcana": "minor",
+    "suit": "cups",
+    "number": 10,
+    "name": "Ten of cups",
+    "description": "Joy Peace Family"
+  },
+  {
+    "arcana": "minor",
+    "suit": "cups",
+    "number": 11,
+    "name": "Page of cups",
+    "description": "Be Emotional Be Intuitive Be Intimate Be Loving"
+  },
+  {
+    "arcana": "minor",
+    "suit": "cups",
+    "number": 12,
+    "name": "Knight of cups",
+    "description": "Romantic Imaginative Sensitive Refined Introspective"
+  },
+  {
+    "arcana": "minor",
+    "suit": "cups",
+    "number": 13,
+    "name": "Queen of cups",
+    "description": "Loving Tenderhearted Intuitive Psychic Spiritual"
+  },
+  {
+    "arcana": "minor",
+    "suit": "cups",
+    "number": 14,
+    "name": "King of cups",
+    "description": "Wise Calm Diplomatic Caring Tolerant"
+  },
+  {
+    "arcana": "minor",
+    "suit": "wands",
+    "number": 1,
+    "name": "Ace of wands",
+    "description": "Creative Force Enthusiasm Confidence Courage"
+  },
+  {
+    "arcana": "minor",
+    "suit": "wands",
+    "number": 2,
+    "name": "Two of wands",
+    "description": "Personal Power Boldness Originality"
+  },
+  {
+    "arcana": "minor",
+    "suit": "wands",
+    "number": 3,
+    "name": "Three of wands",
+    "description": "Exploration Foresight Leadership"
+  },
+  {
+    "arcana": "minor",
+    "suit": "wands",
+    "number": 4,
+    "name": "Four of wands",
+    "description": "Celebration Freedom Excitement"
+  },
+  {
+    "arcana": "minor",
+    "suit": "wands",
+    "number": 5,
+    "name": "Five of wands",
+    "description": "Disagreement Competition Hassles"
+  },
+  {
+    "arcana": "minor",
+    "suit": "wands",
+    "number": 6,
+    "name": "Six of wands",
+    "description": "Triumph Acclaim Pride"
+  },
+  {
+    "arcana": "minor",
+    "suit": "wands",
+    "number": 7,
+    "name": "Seven of wands",
+    "description": "Aggression Defiance Conviction"
+  },
+  {
+    "arcana": "minor",
+    "suit": "wands",
+    "number": 8,
+    "name": "Eight of wands",
+    "description": "Quick Action Conclusion News"
+  },
+  {
+    "arcana": "minor",
+    "suit": "wands",
+    "number": 9,
+    "name": "Nine of wands",
+    "description": "Defensiveness Perseverance Stamina"
+  },
+  {
+    "arcana": "minor",
+    "suit": "wands",
+    "number": 10,
+    "name": "Ten of wands",
+    "description": "Overextending Burdens Struggle"
+  },
+  {
+    "arcana": "minor",
+    "suit": "wands",
+    "number": 11,
+    "name": "Page Of wands",
+    "description": "Be Creative Be Enthusiastic Be Courageous Be Confident"
+  },
+  {
+    "arcana": "minor",
+    "suit": "wands",
+    "number": 12,
+    "name": "Knight Of wands",
+    "description": "Charming Self-Confident Daring Adventurous Passionate"
+  },
+  {
+    "arcana": "minor",
+    "suit": "wands",
+    "number": 13,
+    "name": "Queen Of wands",
+    "description": "Attractive Wholehearted Energetic Cheerful Self-Assured"
+  },
+  {
+    "arcana": "minor",
+    "suit": "wands",
+    "number": 14,
+    "name": "King Of wands",
+    "description": "Creative Inspiring Forceful Charismatic Bold"
+  },
+  {
+    "arcana": "minor",
+    "suit": "swords",
+    "number": 1,
+    "name": "Ace of swords",
+    "description": "Mental Force Truth Justice Fortitude"
+  },
+  {
+    "arcana": "minor",
+    "suit": "swords",
+    "number": 2,
+    "name": "Two of swords",
+    "description": "Blocked Emotions Avoidance Stalemate"
+  },
+  {
+    "arcana": "minor",
+    "suit": "swords",
+    "number": 3,
+    "name": "Three of swords",
+    "description": "Heartbreak Loneliness Betrayal"
+  },
+  {
+    "arcana": "minor",
+    "suit": "swords",
+    "number": 4,
+    "name": "Four of swords",
+    "description": "Rest Contemplation Quiet Preparation"
+  },
+  {
+    "arcana": "minor",
+    "suit": "swords",
+    "number": 5,
+    "name": "Five of swords",
+    "description": "Self-Interest Discord Open Dishonor"
+  },
+  {
+    "arcana": "minor",
+    "suit": "swords",
+    "number": 6,
+    "name": "Six of swords",
+    "description": "The Blues Recovery Travel"
+  },
+  {
+    "arcana": "minor",
+    "suit": "swords",
+    "number": 7,
+    "name": "Seven of swords",
+    "description": "Running Away Lone-Wolf Style Hidden Dishonor"
+  },
+  {
+    "arcana": "minor",
+    "suit": "swords",
+    "number": 8,
+    "name": "Eight of swords",
+    "description": "Restriction Confusion Powerlessness"
+  },
+  {
+    "arcana": "minor",
+    "suit": "swords",
+    "number": 9,
+    "name": "Nine of swords",
+    "description": "Worry Guilt Anguish"
+  },
+  {
+    "arcana": "minor",
+    "suit": "swords",
+    "number": 10,
+    "name": "Ten of swords",
+    "description": "Bottoming Out Victim Mentality Martyrdom"
+  },
+  {
+    "arcana": "minor",
+    "suit": "swords",
+    "number": 11,
+    "name": "Page of swords",
+    "description": "Use Your Mind Be Truthful Be Just Have Fortitude"
+  },
+  {
+    "arcana": "minor",
+    "suit": "swords",
+    "number": 12,
+    "name": "Knight of swords",
+    "description": "Direct Authoritative Incisive Knowledgeable Logical"
+  },
+  {
+    "arcana": "minor",
+    "suit": "swords",
+    "number": 13,
+    "name": "Queen of swords",
+    "description": "Honest Astute Forthright Witty Experienced"
+  },
+  {
+    "arcana": "minor",
+    "suit": "swords",
+    "number": 14,
+    "name": "King of swords",
+    "description": "Intellectual Analytical Articulate Just Ethical"
+  },
+  {
+    "arcana": "minor",
+    "suit": "pentacles",
+    "number": 1,
+    "name": "Ace of pentacles",
+    "description": "Material Force Prosperity Practicality Trust"
+  },
+  {
+    "arcana": "minor",
+    "suit": "pentacles",
+    "number": 2,
+    "name": "Two of pentacles",
+    "description": "Juggling Flexibility Fun"
+  },
+  {
+    "arcana": "minor",
+    "suit": "pentacles",
+    "number": 3,
+    "name": "Three of pentacles",
+    "description": "Teamwork Planning Competence"
+  },
+  {
+    "arcana": "minor",
+    "suit": "pentacles",
+    "number": 4,
+    "name": "Four of pentacles",
+    "description": "Possessiveness Control Blocked Change"
+  },
+  {
+    "arcana": "minor",
+    "suit": "pentacles",
+    "number": 5,
+    "name": "Five of pentacles",
+    "description": "Hard Times Ill Health Rejection"
+  },
+  {
+    "arcana": "minor",
+    "suit": "pentacles",
+    "number": 6,
+    "name": "Six of pentacles",
+    "description": "Having/Not Having: Resources Knowledge Power"
+  },
+  {
+    "arcana": "minor",
+    "suit": "pentacles",
+    "number": 7,
+    "name": "Seven of pentacles",
+    "description": "Assessment Reward Direction Change"
+  },
+  {
+    "arcana": "minor",
+    "suit": "pentacles",
+    "number": 8,
+    "name": "Eight of pentacles",
+    "description": "Diligence Knowledge Detail"
+  },
+  {
+    "arcana": "minor",
+    "suit": "pentacles",
+    "number": 9,
+    "name": "Nine of pentacles",
+    "description": "Discipline Self-Reliance Refinement"
+  },
+  {
+    "arcana": "minor",
+    "suit": "pentacles",
+    "number": 10,
+    "name": "Ten of pentacles",
+    "description": "Affluence Permanence Convention"
+  },
+  {
+    "arcana": "minor",
+    "suit": "pentacles",
+    "number": 11,
+    "name": "Page of pentacles",
+    "description": "Have an Effect Be Practical Be Prosperous Be Trusting/Trustworthy"
+  },
+  {
+    "arcana": "minor",
+    "suit": "pentacles",
+    "number": 12,
+    "name": "Knight of pentacles",
+    "description": "Unwavering Cautious Thorough Realistic Hardworking"
+  },
+  {
+    "arcana": "minor",
+    "suit": "pentacles",
+    "number": 13,
+    "name": "Queen of pentacles",
+    "description": "Nurturing Bighearted Down-to-Earth Resourceful Trustworthy"
+  },
+  {
+    "arcana": "minor",
+    "suit": "pentacles",
+    "number": 14,
+    "name": "King of pentacles",
+    "description": "Enterprising Adept Reliable Supporting Steady"
+  }
+]

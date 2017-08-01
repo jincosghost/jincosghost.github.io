@@ -1,0 +1,72 @@
+::-moz-selection{background:#b3d4fc;text-shadow:none}::selection{background:#b3d4fc;text-shadow:none}hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}audio,canvas,iframe,img,svg,video{vertical-align:middle}fieldset{border:0;margin:0;padding:0}textarea{resize:vertical}.hidden{display:none !important}.visuallyhidden{border:0;clip:rect(0,0,0,0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.visuallyhidden.focusable:active,.visuallyhidden.focusable:focus{clip:auto;height:auto;margin:0;overflow:visible;position:static;width:auto}.invisible{visibility:hidden}.clearfix:before,.clearfix:after{content:" ";display:table}.clearfix:after{clear:both}@media only print{*,*:before,*:after{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a,a:visited{text-decoration:underline}a[href^="#"]:after,a[href^="javascript:"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}p,h2,h3{orphans:3;widows:3}h2,h3{page-break-after:avoid}.card,.card-panel{background-color:transparent !important;border-radius:0px;box-shadow:none;padding:0}.card .card-content{padding:0}.print-hide{display:none;visibility:hidden}}
+
+* {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+html {
+    background-color: #3071a9;
+    -webkit-text-size-adjust: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+button {
+    color: #000;
+}
+canvas {
+    max-width: 99%;
+}
+input[type=text] {
+    height: 1.5rem;
+}
+.card {
+    margin: 0;
+}
+.hidden {
+    display: none !important;
+}
+.label {
+    font-size: 0.8rem;
+    color: #9e9e9e;
+}
+.thumb {
+    display: none;
+}
+/* Special styling for WebKit/Blink */
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: 1px solid #ffffff;
+    height: 26px;
+    width: 16px;
+    border-radius: 3px;
+    background: #2196F3;
+    cursor: pointer;
+    margin-top: -11px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+}
+/* All the same stuff for Firefox */
+input[type=range]::-moz-range-thumb {
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+    border: 1px solid #000000;
+    height: 26px;
+    width: 16px;
+    border-radius: 3px;
+    background: #2196F3;
+    cursor: pointer;
+}
+/* All the same stuff for IE */
+input[type=range]::-ms-thumb {
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+    border: 1px solid #000000;
+    height: 26px;
+    width: 16px;
+    border-radius: 3px;
+    background: #2196F3;
+    cursor: pointer;
+}

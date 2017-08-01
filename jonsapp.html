@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Jon's App</title>
+        <meta name="description" content="Does Stuff">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+    <h1>Jon's App</h1>
+    <strong>It does stuff.</strong>
+    <br><br>
+    <button id="buttz" onclick="doStuff()">Do Stuff</button>
+    <br><br>
+    <div id="outputz"></div>
+    <script>
+    function doStuff(){
+
+        var buttz = document.getElementById("buttz");
+        var outputz = document.getElementById("outputz");
+        var timez = Math.floor(Math.random() * 10) + 1;
+
+        outputz.innerHTML = "";
+        buttz.innerHTML = "Doing...";
+
+        setTimeout(function(){
+
+            outputz.innerHTML = "Stuff was done in " + timez + " seconds.";
+            buttz.innerHTML = "Do more stuff";
+
+        }, (timez * 1000));
+
+    }
+    </script>
+    </body>
+ </html>

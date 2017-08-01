@@ -1,0 +1,88 @@
+<!doctype html>
+<html amp lang="en-GB">
+    <head>
+        <meta charset="UTF-8">
+        <script async src="https://cdn.ampproject.org/v0.js"></script>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>The Dumping Ground</title>
+        <meta name="description" content="Click me.">
+        <link rel="canonical" href="http://jincosghost.github.io/index.html">
+        <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+        <style amp-custom>
+            body {
+                background-image: url("http://api.deckchair.com/v1/viewer/camera/533c829d60a087e91766ef19");
+                background-size: cover;
+                background-color: #E4E4E4;
+                font-family: 'Roboto', sans-serif;
+            }
+            main {
+                margin: 0 auto;
+                padding: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                resize: both;
+                overflow: auto;
+            }
+            main div {
+                background:rgba(255,255,255,0.6);
+                border-radius: 25px;
+                width: 50%;
+                padding: 20px;
+                resize: none;
+                overflow: auto;
+            }
+            a {
+                transition: color .4s;
+                color: #265C83;
+                text-decoration: none;
+            }
+            a:link,
+            a:visited { color: #265C83; }
+            a:hover   { color: #7FDBFF; }
+            a:active  {
+                transition: color .3s;
+                color: #007BE6;
+            }
+        </style>
+        <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+        <meta name="theme-color" content="#265C83">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="application-name" content="Jinco's Ghost">
+        <link rel="manifest" href="/manifest.json">
+    </head>
+    <body>
+        <main>
+            <div>
+                <p><a rel="amphtml" href="/permap" target="_blank" rel="noopener">Measure your psychological wellbeing here.</a></p>
+                <p><a href="/files/PERMAP_Trend.xlsb">Get a spreadsheet to track your wellbeing and produce trend graphs here [.xls - 251kb].</a></p>
+                <p><a href="/files/waya.apk">Download an Android app that pesters you to improve here [.apk - 638kb].</a></p>
+                <p><a rel="amphtml" href="/token" target="_blank" rel="noopener">Analyse text against the WWBP'S psychological wellbeing lexicon here.</a></p>
+                <p><a href="/files/MLQ10.xlsb">Measure your sense of meaning and purpose here [.xls - 80kb].</a></p>
+                <p><a href="/files/MeaningStreams.pdf">Get a simple meaning in life exercise sheet here [.pdf - 143kb].</a></p>
+                <p><a href="/files/MPWorkbook.pdf">Get a printable meaning and purpose workbook here [.pdf - 210kb].</a></p>
+                <p><a rel="amphtml" href="/tarot" target="_blank" rel="noopener">Generate a three card tarot spread here.</a></p>
+                <p><a rel="amphtml" href="jonsnews.html" target="_blank" rel="noopener">A TTS news headline reader for Jon.</a></p>
+            </div>
+        </main>
+        <script>
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('/sw.js').then(function (registration) {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope)
+                }, function (err) {
+                    console.log('ServiceWorker registration failed: ', err)
+                })
+            }
+            function loadCss (filename) {
+                var l = document.createElement('link')
+                l.rel = 'stylesheet'
+                l.href = filename
+                var h = document.getElementsByTagName('head')[0]
+                h.parentNode.insertBefore(l, h)
+            }
+            loadCss('https://fonts.googleapis.com/css?family=Roboto:400,700')
+        </script>
+    </body>
+</html>

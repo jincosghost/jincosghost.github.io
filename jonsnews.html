@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jon's Lazy News Reader</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+  <style>
+    hr {
+      margin-top: 0;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <select id="sourcelist" class="three columns" autofocus></select>
+      <span class="one column">&nbsp;</span>
+      <button type="button" class="button-primary two columns" onclick="start(); return false;">Start</button>
+      <button type="button" class="two columns" onclick="stop(); return false;">Stop</button>
+      <button type="button" class="two columns" onclick="pause(); return false;">Pause</button>
+      <button type="button" class="two columns" onclick="resume(); return false;">Resume</button>
+    </div>
+    <hr>
+    <p>Headlines from <span id="source"></span>:</p>
+    <ul id="headlinesList"></ul>
+  </div>
+
+  <script type="text/javascript">
+    var sel = document.getElementById('sourcelist')
+
+    function start () {
+      var ul = document.getElementById('headlinesList')
+      window.speechSynthesis.cancel()
+      ul.innerHTML = ""
+      $('#source').text("")
+      if ('speechSynthesis' in window) {
+        var sourceID = sel.options[sel.selectedIndex].value
+        $.getJSON('https://newsapi.org/v1/articles?source=' + sourceID + '&apiKey=e598774ccd414ec6bf9c405d41e0ffab', function (data) {
+          $('#source').text(data.source)
+          var sourceMsg = new SpeechSynthesisUtterance("Loading headlines from " + data.source);
+          window.speechSynthesis.speak(sourceMsg);
+          $.each(data.articles, function (i, v) {
+            var li = document.createElement('li')
+            li.innerHTML = "<a href='" + v.url + "' target='_blank'>" + v.title + "</a>"
+            ul.appendChild(li)
+            var msg = new SpeechSynthesisUtterance(v.title);
+            window.speechSynthesis.speak(msg);
+          })
+        })
+      } else {
+        alert("Your browser doesn't support tts, dick.")
+      }
+    }
+
+    function stop () {
+      window.speechSynthesis.cancel()
+    }
+
+    function pause () {
+      window.speechSynthesis.pause()
+    }
+
+    function resume () {
+      window.speechSynthesis.resume()
+    }
+
+    // Load the list of sources once the page is ready
+    document.addEventListener('DOMContentLoaded', function loaded () {
+      $.getJSON('https://newsapi.org/v1/sources?language=en', function (data) {
+        $.each(data.sources, function (i, v) {
+          var opt = document.createElement('option')
+          opt.value = v.id
+          opt.innerHTML = v.name
+          sel.appendChild(opt)
+        })
+      })
+      document.removeEventListener('DOMContentLoaded', loaded)
+    })
+  </script>
+</body>
+</html>

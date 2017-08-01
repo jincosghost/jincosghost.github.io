@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+        <title>Tokenizer</title>
+        <meta name="description" content="Tokenize!"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="manifest" href="manifest.json">
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css'/>
+        <style>
+        button {
+            -ms-touch-action: manipulation;
+                touch-action: manipulation;
+        }
+        .hidden {
+            display: none !important;
+        }
+        @media print {
+            a:after {content:" (" attr(href) ") ";font-size:0.8em;font-weight:normal;}
+            a {color: #000; text-decoration: none; font-weight: normal};
+            body {background: #fff; color: #000; font-size: 1.2em;}
+            h1 {font-size: 1.4em; margin: 1rem 0;}
+            h2 {font-size: 1.3em; margin: 1rem 0;}
+            h3 {font-size: 1.2em; margin: 1rem 0;}
+            hr {margin: 1rem 0;}
+            p {margin-bottom: 0;}
+            #topDiv {display:none !important;}
+            .container {max-width: 100%; width: 100%}
+        }
+        </style>
+    </head>
+    <body>
+        <main class="container">
+            <h1>PERMA Tokenizer</h1>
+            <div id="topDiv">
+                <p>This will take all of the text from the input box below and match it against the PERMAv3 Lexicon, it can also output it as a tokenized CSV file.</p>
+                <p>The tokenizer may have trouble with special characters and phrases such as HTML elements, web addresses and phone numbers. It is recommended that these are removed before tokenizing.</p>
+                <label for="textInput">Input:</label>
+                <textarea class="u-full-width u-max-full-width" placeholder="Dear diary…" id="textInput"></textarea>
+                <div class="row">
+                    <div class="three columns">
+                        <label for="shortPERMACheck">Use tsp75 Lexicon</label>
+                        <input id="shortPERMACheck" type="checkbox">
+                    </div>
+                    <div class="three columns">
+                        <label for="generateCSVCheck">Generate CSV of tokens</label>
+                        <input id="generateCSVCheck" type="checkbox">
+                    </div>
+                    <div id="alphaCSV" class="three columns hidden">
+                        <label for="alphabetiseCheck">Sort tokens alphabetically</label>
+                        <input id="alphabetiseCheck" type="checkbox">
+                    </div>
+                </div>
+                <div class="row" id="buttonRow">
+                    <button id="startButton" class="button-primary" type="button">Go!</button>
+                    <button id="btnPrint" class="button-default hidden" type="button">Print Results</button>
+                </div>
+                <hr>
+            </div>
+            <div id="content"></div>
+        </main>
+        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
