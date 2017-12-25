@@ -1,419 +1,80 @@
 <!doctype html>
 <html lang="en-GB">
-    <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>PERMA-P</title>
-      <meta name="description" content="PERMA-P based on Butler, J., &amp; Kern, M. L. (2015)">
+    <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+      <meta charset="utf-8">
+      <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1">
+      <meta name="viewport" content="width=device-width,initial-scale=1,minimal-ui">
+      <title>PERMAP</title>
 
+      <!-- Mobile Stuff -->
       <meta name="HandheldFriendly" content="True">
       <meta name="MobileOptimized" content="320">
       <meta name="mobile-web-app-capable" content="yes">
-      <meta name="theme-color" content="#3071a9">
-      <link rel="manifest" href="/manifest.json">
+
+      <!-- Add to homescreen for Safari on iOS -->
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+      <meta name="apple-mobile-web-app-title" content="PERMAP">
+
+      <!-- Tile icon for Windows 10 (144x144 + tile color) -->
+      <meta name="msapplication-TileColor" content="#2196F3">
+
+      <!-- Chrome for Android theme color -->
+      <meta name="theme-color" content="#2196F3">
+
+      <!-- Disable format detection -->
       <meta name="format-detection" content="telephone=no"/>
       <meta name="format-detection" content="address=no"/>
 
-      <noscript>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
-        <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-      </noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+      <link rel="stylesheet" href="css/main.css">
     </head>
     <body>
-        <div class="container">
+      <div id="fb-root"></div>
+      <div class="container">
 
-          <div id="topText" class="card-panel blue white-text">PERMA-P<span class=""></span></div>
+        <div class="card-panel blue white-text"><a href="javascript:location.reload();" class="white-text">PERMA-P</a><span id="topText"></span></div>
 
-          <div id="quizPane">
+        <div id="quizPane">
 
-            <div class="block">
-              <div class="row">
-                <div class="col s12">
-                  <div class="card white">
-                    <div class="card-content black-text">
-                      <span class="card-title">Welcome</span>
-                      <p>PERMA-P is a free to use <a href="http://positivepsychologyprogram.com/perma-model/" rel="external">PERMA</a> measurment tool. It is for noncommercial research or assessment purposes only and is based on <i>Butler, J., &amp; Kern, M. L. (2015). The PERMA-Profiler: A brief multidimensional measure of flourishing.</i> Available from <a href="http://www.peggykern.org/questionnaires.html" rel="external">peggykern.org</a>.</p><br/>
-                    </div>
+          <div class="block">
+            <div class="row">
+              <div class="col s12">
+                <div class="card white">
+                  <div class="card-content black-text">
+                    <span class="card-title">Welcome</span>
+                    <p>PERMA-P is a free to use <a href="http://positivepsychologyprogram.com/perma-model/" rel="external">PERMA</a> measurment tool. It is for noncommercial research or assessment purposes only and is based on <i>Butler, J., &amp; Kern, M. L. (2015). The PERMA-Profiler: A brief multidimensional measure of flourishing.</i> Available from <a href="http://www.peggykern.org/questionnaires.html" rel="external">peggykern.org</a>.</p><br/>
                   </div>
                 </div>
               </div>
+            </div>
 
-              <div class="row">
-                <div class="col s12">
-                  <div class="card white">
-                    <div class="card-content black-text">
-                      <span class="card-title">Options</span>
-                      <div class="row">
-                        <div class="input-field">
-                          <label for="nameInput" class="col s5">Name to print on results:</label>
-                          <input id="nameInput" type="text" class="col s7"/>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <p class="col s5">Compare results to averages?</p>
-                        <div id="avgSwitch" class="switch col s7">
-                          <label>
-                            Off
-                            <input type="checkbox" id="goCompare">
-                            <span class="lever"></span>
-                            On
-                          </label>
-                        </div>
+            <div class="row">
+              <div class="col s12">
+                <div class="card white">
+                  <div class="card-content black-text">
+                    <span class="card-title">Options</span>
+                    <div class="row">
+                      <div class="input-field">
+                        <p for="nameInput" class="col s5">Name to print on results:</p>
+                        <input id="nameInput" type="text" class="col s7" placeholder="(optional)"/>
                       </div>
                     </div>
-                    <div class="card-action right-align">
-                      <a href="#!" class="btnNext" onclick="nextBlock(this)">Start</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row prevResTable">
-                <div class="col s12">
-                  <div class="card white">
-                    <div class="card-content">
-                      <span class="card-title">Previous Results</span>
-                      <table class="striped">
-                          <thead>
-                            <tr>
-                                <th data-field="name">Name</th>
-                                <th data-field="date">Date</th>
-                                <th data-field="p+">+</th>
-                                <th data-field="p-">-</th>
-                                <th data-field="e">E</th>
-                                <th data-field="r">R</th>
-                                <th data-field="m">M</th>
-                                <th data-field="a">A</th>
-                                <th data-field="h">H</th>
-                                <th data-field="l">L</th>
-                                <th data-field="ow">OW</th>
-                            </tr>
-                          </thead>
-                          <tbody class="tbody">
-                          </tbody>
-                      </table>
-                      <p>&nbsp;</p>
-                      <div class="right-align print-hide">
-                          <a href="#!" class="waves-effect waves-light btn-flat" onclick="clearPreviousScores()">Clear previous scores.</a>
+                    <div class="row">
+                      <p class="col s5">Compare results to averages?<p>
+                      <div class="switch col s7">
+                        <label>
+                          No
+                          <input type="checkbox" id="goCompare">
+                          <span class="lever"></span>
+                          Yes
+                        </label>
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div><!-- end of block1 -->
-
-            <div class="row block">
-              <div class="col s12">
-                <div class="card white">
-                  <div class="card-content">
-                    <span class="card-title">Scale: Never (0) - Always (10).</span>
-                        <p>
-                          How much of the time do you feel you are making progress towards accomplishing your goals?
-                          <input type="range" onchange="updatevalues(this)" id="A1" min="0" max="10" value="5"/>
-                          <span class="label">5</span>
-                        </p>
-                        <p>
-                          How often do you become absorbed in what you are doing?
-                          <input type="range" onchange="updatevalues(this)" id="E1" min="0" max="10" value="5"/>
-                          <span class="label">5</span>
-                        </p>
-                        <p>
-                          In general, how often do you feel joyful?
-                          <input type="range" onchange="updatevalues(this)" id="P1" min="0" max="10" value="5"/>
-                          <span class="label">5</span>
-                        </p>
-                        <p>
-                          In general, how often do you feel anxious?
-                          <input type="range" onchange="updatevalues(this)" id="N1" min="0" max="10" value="5"/>
-                          <span class="label">5</span>
-                        </p>
-                        <p>
-                          How often do you achieve the important goals you have set for yourself?
-                          <input type="range" onchange="updatevalues(this)" id="A2" min="0" max="10" value="5"/>
-                          <span class="label">5</span>
-                        </p>
-                  </div>
                   <div class="card-action right-align">
-                    <a href="#!" class="btnNext" onclick="nextBlock(this)">Next</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row block">
-              <div class="col s12">
-                <div class="card white">
-                  <div class="card-content">
-                    <span class="card-title">Scale: Terrible (0) - Excellent (10).</span>
-                        <p>
-                          In general, how would you say your health is?
-                          <input type="range" onchange="updatevalues(this)" id="H1" min="0" max="10" value="5"/>
-                          <span class="label">5</span>
-                        </p>
-                  </div>
-                  <div class="card-action right-align">
-                    <a href="#!" class="btnNext" onclick="nextBlock(this)">Next</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row block">
-              <div class="col s12">
-                <div class="card white">
-                  <div class="card-content">
-                    <span class="card-title">Scale: Not at all (0) - Completely (10).</span>
-                        <p>
-                          In general, to what extent do you lead a purposeful and meaningful life?
-                          <input type="range" onchange="updatevalues(this)" id="M1" min="0" max="10" value="5"/>
-                          <span class="label">5</span>
-                        </p>
-                        <p>
-                          To what extent do you receive help and support from others when you need it?
-                          <input type="range" onchange="updatevalues(this)" id="R1" min="0" max="10" value="5"/>
-                          <span class="label">5</span>
-                        </p>
-                        <p>
-                          In general, to what extent do you feel that what you do in your life is valuable and worthwhile?
-                          <input type="range" onchange="updatevalues(this)" id="M2" min="0" max="10" value="5"/>
-                          <span class="label">5</span>
-                        </p>
-                        <p>
-                          In general, to what extent do you feel excited and interested in things?
-                          <input type="range" onchange="updatevalues(this)" id="E2" min="0" max="10" value="5"/>
-                          <span class="label">5</span>
-                        </p>
-                        <p>
-                          How lonely do you feel in your daily life?
-                          <input type="range" onchange="updatevalues(this)" id="LON" min="0" max="10" value="5"/>
-                          <span class="label">5</span>
-                        </p>
-                  </div>
-                  <div class="card-action right-align">
-                    <a href="#!" class="btnNext" onclick="nextBlock(this)">Next</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row block">
-              <div class="col s12">
-                <div class="card white">
-                  <div class="card-content">
-                    <span class="card-title">Scale: Terrible (0) - Excellent (10).</span>
-                        <p>
-                          How satisfied are you with your current physical health?
-                          <input type="range" onchange="updatevalues(this)" id="H2" min="0" max="10" value="5"/>
-                          <span class="label">5</span>
-                        </p>
-                  </div>
-                  <div class="card-action right-align">
-                    <a href="#!" class="btnNext" onclick="nextBlock(this)">Next</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row block">
-              <div class="col s12">
-                <div class="card white">
-                  <div class="card-content">
-                    <span class="card-title">Scale: Never (0) - Always (10).</span>
-                        <p>
-                          In general, how often do you feel positive?
-                          <input type="range" onchange="updatevalues(this)" id="P2" min="0" max="10" value="5"/>
-                          <span class="label">5</span>
-                        </p>
-                        <p>
-                          In general, how often do you feel angry?
-                          <input type="range" onchange="updatevalues(this)" id="N2" min="0" max="10" value="5"/>
-                          <span class="label">5</span>
-                        </p>
-                        <p>
-                          How often are you able to handle your responsibilities?
-                          <input type="range" onchange="updatevalues(this)" id="A3" min="0" max="10" value="5"/>
-                          <span class="label">5</span>
-                        </p>
-                        <p>
-                          In general, how often do you feel sad?
-                          <input type="range" onchange="updatevalues(this)" id="N3" min="0" max="10" value="5"/>
-                          <span class="label">5</span>
-                        </p>
-                        <p>
-                          How often do you lose track of time while doing something you enjoy?
-                          <input type="range" onchange="updatevalues(this)" id="E3" min="0" max="10" value="5"/>
-                          <span class="label">5</span>
-                        </p>
-                  </div>
-                  <div class="card-action right-align">
-                    <a href="#!" class="btnNext" onclick="nextBlock(this)">Next</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row block">
-              <div class="col s12">
-                <div class="card white">
-                  <div class="card-content">
-                    <span class="card-title">Scale: Terrible (0) - Excellent (10).</span>
-                        <p>
-                          Compared to others of your same age and sex, how is your health?
-                          <input type="range" onchange="updatevalues(this)" id="H3" min="0" max="10" value="5"/>
-                          <span class="label">5</span>
-                        </p>
-                  </div>
-                  <div class="card-action right-align">
-                    <a href="#!" class="btnNext" onclick="nextBlock(this)">Next</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row block">
-              <div class="col s12">
-                <div class="card white">
-                  <div class="card-content">
-                    <span class="card-title">Scale: Not at all (0) - Completely (10).</span>
-                        <p>
-                          To what extent do you feel loved?
-                          <input type="range" onchange="updatevalues(this)" id="R2" min="0" max="10" value="5"/>
-                          <span class="label">5</span>
-                        </p>
-                        <p>
-                          To what extent do you generally feel you have a sense of direction in your life?
-                          <input type="range" onchange="updatevalues(this)" id="M3" min="0" max="10" value="5"/>
-                          <span class="label">5</span>
-                        </p>
-                        <p>
-                          How satisfied are you with your personal relationships?
-                          <input type="range" onchange="updatevalues(this)" id="R3" min="0" max="10" value="5"/>
-                          <span class="label">5</span>
-                        </p>
-                        <p>
-                          In general, to what extent do you feel contented?
-                          <input type="range" onchange="updatevalues(this)" id="P3" min="0" max="10" value="5"/>
-                          <span class="label">5</span>
-                        </p>
-                  </div>
-                  <div class="card-action right-align">
-                    <a href="#!" class="btnNext" onclick="nextBlock(this)">Next</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row block">
-              <div class="col s12">
-                <div class="card white">
-                  <div class="card-content">
-                    <span class="card-title">Scale: Not at all (0) - Completely (10).</span>
-                        <p>
-                          Taking all things together, how happy would you say you are?
-                          <input type="range" onchange="updatevalues(this)" id="Z1" min="0" max="10" value="5"/>
-                          <span class="label">5</span>
-                        </p>
-                  </div>
-                  <div class="card-action right-align">
-                    <a id="doneLink" class="btnNext" onclick="calculateScores()" href="#!">Done</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div><!-- eng of quizPane -->
-
-          <div id="resultsPane" class="hidden">
-              <div class="row">
-                <div class="col s12">
-                  <div class="card white">
-                    <div class="card-content">
-                      <span class="card-title">Overview</span>
-                      <p>"In his 2011 book Flourish, Dr. Martin Seligman, distinguished Professor of Psychology at the University of  Pennsylvania and one of the founders of the field of positive psychology, defined 5 pillars of wellbeing:  PERMA (positive emotion, engagement, relationships, meaning, accomplishment). The PERMA-Profiler  measures these five pillars, along with negative emotion and health." (Butler &amp; Kern, 2015)</p>
-                      <br/>
-                      <p id="keyText">Key: <span class="blue-text">blue = your results</span>, <span class="teal-text">teal = averages</span> (n=13026).</p>
-                      <canvas id="resultsChart" class="responsive-img"></canvas><br/>
-                      <h4>Scores (/10)</h4>
-                      <p><b>P</b>: <span class="pRes"></span> <b>E</b>: <span class="eRes"></span> <b>R</b>: <span class="rRes"></span> <b>M</b>: <span class="mRes"></span> <b>A</b>: <span class="aRes"></span></p>
-                      <p>&nbsp;</p>
-                      <p><b>Negative Emotions</b>: <span class="nRes"></span> <b>Health</b>: <span class="hRes"></span> <b>Loneliness</b>: <span class="lonRes"></span></p>
-                      <p>&nbsp;</p>
-                      <p><b>Overall Wellbeing</b>: <span class="owRes"></span> / 10</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col s12">
-                <div class="card white">
-                  <div class="card-content">
-                    <span class="card-title">Positive &amp; Negative Emotion</span>
-                      <p>+ Score: <span class="pRes"></span> / 10.</p>
-                      <p>- Score: <span class="nRes"></span> / 10.</p>
-                      <p>"Emotions are an important part of our well-being. Emotions can range from very negative to very positive,  and range from high arousal (e.g., excitement, explosive) to low arousal (e.g., calm, relaxed, sad). For  Positive emotion, the PERMA-Profiler measures general tendencies toward feeling contentment and joy.  For Negative emotion, the Profiler measures tendencies toward feeling, sad, anxious, and angry." (Butler &amp; Kern, 2015)</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col s12">
-                <div class="card white">
-                  <div class="card-content">
-                    <span class="card-title">Engagement</span>
-                      <p>Score: <span class="eRes"></span> / 10.</p>
-                      <p>"Engagement refers to being absorbed, interested, and involved in an activity or the world itself. Very high  levels of engagement are known as a state called “flow”, in which you are so completely absorbed in an  activity that you lose all sense of time." (Butler &amp; Kern, 2015)</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col s12">
-                <div class="card white">
-                  <div class="card-content">
-                    <span class="card-title">Relationships</span>
-                      <p>Score: <span class="rRes"></span> / 10.</p>
-                      <p>"Relationships refer to feeling loved, supported, and valued by others. Having positive relationships with others is an important part of life feeling good and going well. Other people matter!" (Butler &amp; Kern, 2015)</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col s12">
-                <div class="card white">
-                  <div class="card-content">
-                    <span class="card-title">Meaning</span>
-                      <p>Score: <span class="mRes"></span> / 10.</p>
-                      <p>"Meaning refers to having a sense of purpose in life, a direction where life is going, feeling that life is  valuable and worth living, or connecting to something greater than ourselves, such as religious faith, a  charity or a personally meaningful goal. Meaning provides a sense that life matters." (Butler &amp; Kern, 2015)</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col s12">
-                <div class="card white">
-                  <div class="card-content">
-                    <span class="card-title">Accomplishment</span>
-                      <p>Score: <span class="aRes"></span> / 10.</p>
-                      <p>"Accomplishment can be objective, marked by honors and awards received, but feelings of mastery and  achievement is also important. The Profiler measures subjective feelings of accomplishment and staying on  top of daily responsibilities. It involves working toward and reaching goals, and feeling able to complete  tasks and daily responsibilities." (Butler &amp; Kern, 2015)</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col s12">
-                <div class="card white">
-                  <div class="card-content">
-                    <span class="card-title">Health</span>
-                      <p>Score: <span class="hRes"></span> / 10.</p>
-                      <p>"Although not part of the PERMA model itself, physical health and vitality is another important part of well-being.  The Profiler measures a subjective sense of health – feeling good and healthy each day." (Butler &amp; Kern, 2015)</p>
+                    <a href="#!" class="btnNext" onclick="nextBlock(this)">Start</a>
                   </div>
                 </div>
               </div>
@@ -445,19 +106,389 @@
                     </table>
                     <p>&nbsp;</p>
                     <div class="right-align print-hide">
-                        <a href="#!" class="waves-effect waves-light btn-flat" onclick="clearPreviousScores()">Clear previous scores.</a>
+                        <a id="clear2" href="#!" class="waves-effect waves-light btn-flat">Clear previous scores.</a>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+          </div><!-- end of block1 -->
 
-          </div><!-- eng of resultsPane -->
-        </div><!-- end of container -->
+          <div class="row block">
+            <div class="col s12">
+              <div class="card white">
+                <div class="card-content">
+                  <span class="card-title">Scale: Never (0) - Always (10).</span>
+                      <p>
+                        How much of the time do you feel you are making progress towards accomplishing your goals?
+                        <input type="range" onchange="updatevalues(this)" id="A1" min="0" max="10" value="5"/>
+                        <span class="label">5</span>
+                      </p>
+                      <p>
+                        How often do you become absorbed in what you are doing?
+                        <input type="range" onchange="updatevalues(this)" id="E1" min="0" max="10" value="5"/>
+                        <span class="label">5</span>
+                      </p>
+                      <p>
+                        In general, how often do you feel joyful?
+                        <input type="range" onchange="updatevalues(this)" id="P1" min="0" max="10" value="5"/>
+                        <span class="label">5</span>
+                      </p>
+                      <p>
+                        In general, how often do you feel anxious?
+                        <input type="range" onchange="updatevalues(this)" id="N1" min="0" max="10" value="5"/>
+                        <span class="label">5</span>
+                      </p>
+                      <p>
+                        How often do you achieve the important goals you have set for yourself?
+                        <input type="range" onchange="updatevalues(this)" id="A2" min="0" max="10" value="5"/>
+                        <span class="label">5</span>
+                      </p>
+                </div>
+                <div class="card-action right-align">
+                  <a href="#!" class="btnNext" onclick="nextBlock(this)">Next</a>
+                </div>
+              </div>
+            </div>
+          </div>
 
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js"></script>
-        <script src="js/main.js"></script>
+          <div class="row block">
+            <div class="col s12">
+              <div class="card white">
+                <div class="card-content">
+                  <span class="card-title">Scale: Terrible (0) - Excellent (10).</span>
+                      <p>
+                        In general, how would you say your health is?
+                        <input type="range" onchange="updatevalues(this)" id="H1" min="0" max="10" value="5"/>
+                        <span class="label">5</span>
+                      </p>
+                </div>
+                <div class="card-action right-align">
+                  <a href="#!" class="btnNext" onclick="nextBlock(this)">Next</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row block">
+            <div class="col s12">
+              <div class="card white">
+                <div class="card-content">
+                  <span class="card-title">Scale: Not at all (0) - Completely (10).</span>
+                      <p>
+                        In general, to what extent do you lead a purposeful and meaningful life?
+                        <input type="range" onchange="updatevalues(this)" id="M1" min="0" max="10" value="5"/>
+                        <span class="label">5</span>
+                      </p>
+                      <p>
+                        To what extent do you receive help and support from others when you need it?
+                        <input type="range" onchange="updatevalues(this)" id="R1" min="0" max="10" value="5"/>
+                        <span class="label">5</span>
+                      </p>
+                      <p>
+                        In general, to what extent do you feel that what you do in your life is valuable and worthwhile?
+                        <input type="range" onchange="updatevalues(this)" id="M2" min="0" max="10" value="5"/>
+                        <span class="label">5</span>
+                      </p>
+                      <p>
+                        In general, to what extent do you feel excited and interested in things?
+                        <input type="range" onchange="updatevalues(this)" id="E2" min="0" max="10" value="5"/>
+                        <span class="label">5</span>
+                      </p>
+                      <p>
+                        How lonely do you feel in your daily life?
+                        <input type="range" onchange="updatevalues(this)" id="LON" min="0" max="10" value="5"/>
+                        <span class="label">5</span>
+                      </p>
+                </div>
+                <div class="card-action right-align">
+                  <a href="#!" class="btnNext" onclick="nextBlock(this)">Next</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row block">
+            <div class="col s12">
+              <div class="card white">
+                <div class="card-content">
+                  <span class="card-title">Scale: Terrible (0) - Excellent (10).</span>
+                      <p>
+                        How satisfied are you with your current physical health?
+                        <input type="range" onchange="updatevalues(this)" id="H2" min="0" max="10" value="5"/>
+                        <span class="label">5</span>
+                      </p>
+                </div>
+                <div class="card-action right-align">
+                  <a href="#!" class="btnNext" onclick="nextBlock(this)">Next</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row block">
+            <div class="col s12">
+              <div class="card white">
+                <div class="card-content">
+                  <span class="card-title">Scale: Never (0) - Always (10).</span>
+                      <p>
+                        In general, how often do you feel positive?
+                        <input type="range" onchange="updatevalues(this)" id="P2" min="0" max="10" value="5"/>
+                        <span class="label">5</span>
+                      </p>
+                      <p>
+                        In general, how often do you feel angry?
+                        <input type="range" onchange="updatevalues(this)" id="N2" min="0" max="10" value="5"/>
+                        <span class="label">5</span>
+                      </p>
+                      <p>
+                        How often are you able to handle your responsibilities?
+                        <input type="range" onchange="updatevalues(this)" id="A3" min="0" max="10" value="5"/>
+                        <span class="label">5</span>
+                      </p>
+                      <p>
+                        In general, how often do you feel sad?
+                        <input type="range" onchange="updatevalues(this)" id="N3" min="0" max="10" value="5"/>
+                        <span class="label">5</span>
+                      </p>
+                      <p>
+                        How often do you lose track of time while doing something you enjoy?
+                        <input type="range" onchange="updatevalues(this)" id="E3" min="0" max="10" value="5"/>
+                        <span class="label">5</span>
+                      </p>
+                </div>
+                <div class="card-action right-align">
+                  <a href="#!" class="btnNext" onclick="nextBlock(this)">Next</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row block">
+            <div class="col s12">
+              <div class="card white">
+                <div class="card-content">
+                  <span class="card-title">Scale: Terrible (0) - Excellent (10).</span>
+                      <p>
+                        Compared to others of your same age and sex, how is your health?
+                        <input type="range" onchange="updatevalues(this)" id="H3" min="0" max="10" value="5"/>
+                        <span class="label">5</span>
+                      </p>
+                </div>
+                <div class="card-action right-align">
+                  <a href="#!" class="btnNext" onclick="nextBlock(this)">Next</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row block">
+            <div class="col s12">
+              <div class="card white">
+                <div class="card-content">
+                  <span class="card-title">Scale: Not at all (0) - Completely (10).</span>
+                      <p>
+                        To what extent do you feel loved?
+                        <input type="range" onchange="updatevalues(this)" id="R2" min="0" max="10" value="5"/>
+                        <span class="label">5</span>
+                      </p>
+                      <p>
+                        To what extent do you generally feel you have a sense of direction in your life?
+                        <input type="range" onchange="updatevalues(this)" id="M3" min="0" max="10" value="5"/>
+                        <span class="label">5</span>
+                      </p>
+                      <p>
+                        How satisfied are you with your personal relationships?
+                        <input type="range" onchange="updatevalues(this)" id="R3" min="0" max="10" value="5"/>
+                        <span class="label">5</span>
+                      </p>
+                      <p>
+                        In general, to what extent do you feel contented?
+                        <input type="range" onchange="updatevalues(this)" id="P3" min="0" max="10" value="5"/>
+                        <span class="label">5</span>
+                      </p>
+                </div>
+                <div class="card-action right-align">
+                  <a href="#!" class="btnNext" onclick="nextBlock(this)">Next</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row block">
+            <div class="col s12">
+              <div class="card white">
+                <div class="card-content">
+                  <span class="card-title">Scale: Not at all (0) - Completely (10).</span>
+                      <p>
+                        Taking all things together, how happy would you say you are?
+                        <input type="range" onchange="updatevalues(this)" id="Z1" min="0" max="10" value="5"/>
+                        <span class="label">5</span>
+                      </p>
+                </div>
+                <div class="card-action right-align">
+                  <a id="doneLink" class="btnNext" href="#!">Done</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- eng of quizPane -->
+
+        <div id="resultsPane" class="hidden">
+            <div class="row">
+              <div class="col s12">
+                <div class="card white">
+                  <div class="card-content">
+                    <span class="card-title">Overview</span>
+                    <p>"In his 2011 book Flourish, Dr. Martin Seligman, distinguished Professor of Psychology at the University of  Pennsylvania and one of the founders of the field of positive psychology, defined 5 pillars of wellbeing:  PERMA (positive emotion, engagement, relationships, meaning, accomplishment). The PERMA-Profiler  measures these five pillars, along with negative emotion and health." (Butler &amp; Kern, 2015)</p>
+                    <br/>
+                    <p id="keyText">Key: <span class="blue-text">blue = your results</span>, <span class="teal-text">teal = averages</span> (n=13026).</p>
+                    <canvas id="resultsChart" class="responsive-img"></canvas><br/>
+                    <h4>Scores (/10)</h4>
+                    <p>
+                      <b>P</b>: <span class="pRes"></span><br/>
+                      <b>E</b>: <span class="eRes"></span><br/>
+                      <b>R</b>: <span class="rRes"></span><br/>
+                      <b>M</b>: <span class="mRes"></span><br/>
+                      <b>A</b>: <span class="aRes"></span>
+                    </p>
+                    <p>&nbsp;</p>
+                    <p>
+                      <b>Negative Emotions</b>: <span class="nRes"></span><br/>
+                      <b>Health</b>: <span class="hRes"></span><br/>
+                      <b>Loneliness</b>: <span class="lonRes"></span>
+                    </p>
+                    <p>&nbsp;</p>
+                    <p><b>Overall Wellbeing</b>: <span class="owRes"></span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row prevResTable">
+            <div class="col s12">
+              <div class="card white">
+                <div class="card-content">
+                  <span class="card-title">Previous Results</span>
+                  <table class="striped">
+                      <thead>
+                        <tr>
+                            <th data-field="name">Name</th>
+                            <th data-field="date">Date</th>
+                            <th data-field="p+">+</th>
+                            <th data-field="p-">-</th>
+                            <th data-field="e">E</th>
+                            <th data-field="r">R</th>
+                            <th data-field="m">M</th>
+                            <th data-field="a">A</th>
+                            <th data-field="h">H</th>
+                            <th data-field="l">L</th>
+                            <th data-field="ow">OW</th>
+                        </tr>
+                      </thead>
+                      <tbody class="tbody">
+                      </tbody>
+                  </table>
+                  <p>&nbsp;</p>
+                  <div class="right-align print-hide">
+                      <a id="clear1" href="#!" class="waves-effect waves-light btn-flat">Clear previous scores.</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col s12">
+              <div class="card white">
+                <div class="card-content">
+                  <span class="card-title">Positive &amp; Negative Emotion</span>
+                    <p>+ Score: <span class="pRes"></span> / 10.</p>
+                    <p>- Score: <span class="nRes"></span> / 10.</p>
+                    <p>"Emotions are an important part of our well-being. Emotions can range from very negative to very positive,  and range from high arousal (e.g., excitement, explosive) to low arousal (e.g., calm, relaxed, sad). For  Positive emotion, the PERMA-Profiler measures general tendencies toward feeling contentment and joy.  For Negative emotion, the Profiler measures tendencies toward feeling, sad, anxious, and angry." (Butler &amp; Kern, 2015)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col s12">
+              <div class="card white">
+                <div class="card-content">
+                  <span class="card-title">Engagement</span>
+                    <p>Score: <span class="eRes"></span> / 10.</p>
+                    <p>"Engagement refers to being absorbed, interested, and involved in an activity or the world itself. Very high  levels of engagement are known as a state called “flow”, in which you are so completely absorbed in an  activity that you lose all sense of time." (Butler &amp; Kern, 2015)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col s12">
+              <div class="card white">
+                <div class="card-content">
+                  <span class="card-title">Relationships</span>
+                    <p>Score: <span class="rRes"></span> / 10.</p>
+                    <p>"Relationships refer to feeling loved, supported, and valued by others. Having positive relationships with others is an important part of life feeling good and going well. Other people matter!" (Butler &amp; Kern, 2015)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col s12">
+              <div class="card white">
+                <div class="card-content">
+                  <span class="card-title">Meaning</span>
+                    <p>Score: <span class="mRes"></span> / 10.</p>
+                    <p>"Meaning refers to having a sense of purpose in life, a direction where life is going, feeling that life is  valuable and worth living, or connecting to something greater than ourselves, such as religious faith, a  charity or a personally meaningful goal. Meaning provides a sense that life matters." (Butler &amp; Kern, 2015)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col s12">
+              <div class="card white">
+                <div class="card-content">
+                  <span class="card-title">Accomplishment</span>
+                    <p>Score: <span class="aRes"></span> / 10.</p>
+                    <p>"Accomplishment can be objective, marked by honors and awards received, but feelings of mastery and  achievement is also important. The Profiler measures subjective feelings of accomplishment and staying on  top of daily responsibilities. It involves working toward and reaching goals, and feeling able to complete  tasks and daily responsibilities." (Butler &amp; Kern, 2015)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col s12">
+              <div class="card white">
+                <div class="card-content">
+                  <span class="card-title">Health</span>
+                    <p>Score: <span class="hRes"></span> / 10.</p>
+                    <p>"Although not part of the PERMA model itself, physical health and vitality is another important part of well-being.  The Profiler measures a subjective sense of health – feeling good and healthy each day." (Butler &amp; Kern, 2015)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col s12">
+              <div class="card white">
+                <div class="card-content">
+                  <span class="card-title">References</span>
+                    <p>The PERMA-Profiler was created by Butler and Kern, and can be found in <i>Butler, J., &amp; Kern, M. L. (2015). The PERMA-Profiler: A brief multidimensional measure of flourishing.</i> Available from <a href="http://www.peggykern.org/questionnaires.html" rel="external">peggykern.org</a>.</p><br/>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- eng of resultsPane -->
+      </div><!-- end of container -->
+
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js"></script>
+      <script src="js/main.js"></script>
     </body>
 </html>
