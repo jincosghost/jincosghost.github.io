@@ -4,6 +4,7 @@ var thinking = document.getElementById('thinking');
 var debugSwitch = document.getElementById('debug');
 var speakSwitch = document.getElementById('speak');
 var dictButt = document.getElementById('dictButt');
+var dictImg = document.getElementById('dictImg');
 
 var GENERIC_QS = [
     'and is there anything else about that?',
@@ -52,42 +53,37 @@ function startDictation() {
     recognition.lang = document.getElementById('dictLang').value;
     recognition.start();
 
-    var img = document.getElementById('dictImg');
-    img.innerText = 'hearing';
-    dictButt.classList.remove('teal');
+    
+    dictImg.innerText = 'hearing';
     dictButt.classList.remove('red');
     dictButt.classList.add('green');
 
     recognition.onspeechend = function() {
         recognition.stop();
-        img.innerText = 'mic';
+        dictImg.innerText = 'mic';
         dictButt.classList.remove('green');
         dictButt.classList.remove('red');
-        dictButt.classList.add('teal');
     };
 
     recognition.onresult = function(e) {
         message.value = e.results[0][0].transcript;
         recognition.stop();
-        img.innerText = 'mic';
+        dictImg.innerText = 'mic';
         dictButt.classList.remove('green');
         dictButt.classList.remove('red');
-        dictButt.classList.add('teal');
         main(message.value);
     };
 
     recognition.onnomatch = function(e) {
         recognition.stop();
-        img.innerText = 'mic';
+        dictImg.innerText = 'mic';
         dictButt.classList.remove('green');
         dictButt.classList.remove('red');
-        dictButt.classList.add('teal');
     };
 
     recognition.onerror = function(e) {
         recognition.stop();
-        img.innerText = 'mic_off';
-        dictButt.classList.remove('teal');
+        dictImg.innerText = 'mic_off';
         dictButt.classList.remove('green');
         dictButt.classList.add('red');
         console.log('dictation error: is your microphone enabled?');
@@ -99,7 +95,15 @@ function startDictation() {
  * @param  {string} text input message
  */
 function main(text) {
-    question.innerText = '...';
+    var box = document.getElementById('boxy');
+    var p = document.createElement('p');
+    var m = document.createElement('p');
+    m.classList.add('from-me', 'animated', 'fadeIn');
+    p.classList.add('callout', 'animated', 'fadeIn');
+    m.innerText = text;
+    p.innerText = '...';
+    box.appendChild(m);
+    box.scrollTop = box.scrollHeight;
 
     // stop words
     var stops = [
@@ -216,22 +220,30 @@ function main(text) {
     } else {
         response = GENERIC_QS[Math.floor(Math.random() * GENERIC_QS.length)];
     }
-
+    
     setTimeout(function() {
-        question.innerText = response;
-        if (speak) {
-            var m = new SpeechSynthesisUtterance(response);
-            window.speechSynthesis.speak(m);
-        }
-    }, thinkingTime);
+        box.appendChild(p);
+        setTimeout(function() {
+            p.innerText = response;
+            if (speak) {
+                var m = new SpeechSynthesisUtterance(response);
+                window.speechSynthesis.speak(m);
+            }
+            box.scrollTop = box.scrollHeight;
+        }, thinkingTime);
+    }, 150);
 }
 
 $(document).ready(function() {
     message.addEventListener('keyup', function(event) {
         event.preventDefault();
         if (event.keyCode === 13) {
-            main(message.value);
-            message.value = '';
+            if (message.value.trim().length == 0 || message.value == '') {
+                alert('Enter a message');
+            } else {
+                main(message.value);
+                message.value = '';
+            }
         }
     });
     
@@ -240,14 +252,34 @@ $(document).ready(function() {
     });
 
     if (!window.hasOwnProperty('webkitSpeechRecognition')) {
-        dictButt.hide();
+        dictImg.innerText = 'mic_off';
     } else {
         dictButt.addEventListener('click', function() {
             startDictation();
         });
     }
 
+    document.getElementById('sendButt').addEventListener('click', function() {
+        if (message.value.trim().length == 0 || message.value == '') {
+            alert('Enter a message');
+        } else {
+            main(message.value);
+            message.value = '';
+        }
+    });
+
+    $('.sidenav').sidenav();
     $('select').select();
     $('.modal').modal();
     $('.fixed-action-btn').floatingActionButton();
+
+    window.M.Modal.init(document.getElementById('welcome'), {dismissible: false});
+    window.M.Modal.getInstance(document.getElementById('welcome')).open();
+
+    /* if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js', {scope: './'})
+        .then(function(registration, err) {
+            if (err) console.log('ServiceWorker failed: ', err);
+        });
+    } */
 });

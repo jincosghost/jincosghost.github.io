@@ -8,11 +8,38 @@
     backface-visibility: hidden;
 }
 html {
-    background-color: #EEAA7B;
     -webkit-text-size-adjust: none;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     user-select: none;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+main {
+    flex: 1 0 auto;
+}
+nav {
+    background-color: #455A64;
+    padding: 0 10px;
+}
+input {
+    color: #fff;
+}
+.page-footer {
+    background-color: #607D8B;
+}
+.select-dropdown {
+    color: #000;
+}
+.box {
+    max-height: 75vh;
+    overflow: scroll;
 }
 .clear {
     clear: both
@@ -24,7 +51,7 @@ html {
     background: #E5E5EA;
     border-radius: 25px;
     color: black;
-    float: left;
+    max-width: max-content;
 }
 .callout::before {
     content: "";
@@ -55,7 +82,9 @@ html {
     color: white;
     background: #0B93F6;
     border-radius: 25px;
-    float: right;
+    direction: rtl;
+    max-width: max-content;
+    margin-left: auto;
 }
 .from-me::before {
       content: "";
