@@ -1,47 +1,26 @@
-var message = document.getElementById('message');
-var question = document.getElementById('question');
+// I/O elements
+var txtInput = document.getElementById('txtInput');
+var outputDiv = document.getElementById('outputDiv');
+
+// Options elements
 var thinking = document.getElementById('thinking');
-var debugSwitch = document.getElementById('debug');
-var speakSwitch = document.getElementById('speak');
-var dictButt = document.getElementById('dictButt');
+var debugSwitch = document.getElementById('debugChk');
+var speakSwitch = document.getElementById('speakChk');
+
+// Dictation elements
+var dictBttn = document.getElementById('dictBttn');
 var dictImg = document.getElementById('dictImg');
+var dictLang = document.getElementById('dictLang');
 
-var GENERIC_QS = [
-    'and is there anything else about that?',
-    'and whereabouts do you feel that?',
-    'and what is that like?',
-    'and what happens just before that?',
-    'and what happens next?',
-    'and then what happens?',
-    'and where would that come from?',
-    'and where could that come from?',
-    'and if that happens, what would you like to happen now?',
-    'and what needs to happen for that?',
-];
+// Modals
+var optionsModal = document.getElementById('optionsMDL');
+var errorModal = document.getElementById('errorMDL');
 
-var X_QS = [
-    'and what kind of X is that?',
-    'and what kind of X is that X?',
-    'and is there anything else about X?',
-    'and where is X?',
-    'and whereabouts is X?',
-    'and that\'s X like what?',
-    'and when X happens, what happens next?',
-    'and what happens after X?',
-    'and what happens just before X?',
-    'and where could X come from?',
-    'and what needs to happen for X?',
-    'and can X happen?',
-];
-
-var XY_QS = [
-    'and what is the relationship between X and Y?',
-    'and when X happens, what happens to Y?',
-];
-
-var NE_QS = ['and what would X like to have happen?'];
+// Coach - initialised on window load below
+var coach = new Coach();
 
 /**
+ * Handle speech recognition
  * @function startDictation
  */
 function startDictation() {
@@ -50,42 +29,41 @@ function startDictation() {
     recognition.continuous = false;
     recognition.interimResults = false;
 
-    recognition.lang = document.getElementById('dictLang').value;
+    recognition.lang = dictLang.value;
     recognition.start();
 
-    
     dictImg.innerText = 'hearing';
-    dictButt.classList.remove('red');
-    dictButt.classList.add('green');
+    dictBttn.classList.remove('red');
+    dictBttn.classList.add('green');
 
     recognition.onspeechend = function() {
         recognition.stop();
         dictImg.innerText = 'mic';
-        dictButt.classList.remove('green');
-        dictButt.classList.remove('red');
+        dictBttn.classList.remove('green');
+        dictBttn.classList.remove('red');
     };
 
     recognition.onresult = function(e) {
-        message.value = e.results[0][0].transcript;
+        txtInput.value = e.results[0][0].transcript;
         recognition.stop();
         dictImg.innerText = 'mic';
-        dictButt.classList.remove('green');
-        dictButt.classList.remove('red');
-        main(message.value);
+        dictBttn.classList.remove('green');
+        dictBttn.classList.remove('red');
+        main(txtInput.value);
     };
 
     recognition.onnomatch = function(e) {
         recognition.stop();
         dictImg.innerText = 'mic';
-        dictButt.classList.remove('green');
-        dictButt.classList.remove('red');
+        dictBttn.classList.remove('green');
+        dictBttn.classList.remove('red');
     };
 
     recognition.onerror = function(e) {
         recognition.stop();
         dictImg.innerText = 'mic_off';
-        dictButt.classList.remove('green');
-        dictButt.classList.add('red');
+        dictBttn.classList.remove('green');
+        dictBttn.classList.add('red');
         console.log('dictation error: is your microphone enabled?');
     };
 }
@@ -95,191 +73,125 @@ function startDictation() {
  * @param  {string} text input message
  */
 function main(text) {
-    var box = document.getElementById('boxy');
+    // Empty and disable text input while responding
+    txtInput.value = '';
+    txtInput.disabled = true;
+
+    // Create speech bubbles
     var p = document.createElement('p');
     var m = document.createElement('p');
-    m.classList.add('from-me', 'animated', 'fadeIn');
-    p.classList.add('callout', 'animated', 'fadeIn');
+    m.classList.add('from-me');
+    p.classList.add('callout');
     m.innerText = text;
     p.innerText = '...';
-    box.appendChild(m);
-    box.scrollTop = box.scrollHeight;
+    outputDiv.appendChild(m);
+    outputDiv.scrollTop = outputDiv.scrollHeight;
 
-    // stop words
-    var stops = [
-        'about', 'after', 'all', 'also', 'am', 'an', 'and', 'another', 'any', 
-        'are', 'as', 'at', 'be',
-        'because', 'been', 'before', 'being', 'between', 'both', 'but', 'by',
-        'came', 'can',
-        'come', 'could', 'did', 'do', 'each', 'for', 'from', 'get', 'got',
-        'has', 'had',
-        'he', 'have', 'her', 'here', 'him', 'himself', 'his', 'how',
-        'if', 'in', 'into',
-        'is', 'it', 'like', 'make', 'many', 'me', 'might', 'more', 'most',
-        'much', 'must',
-        'my', 'never', 'now', 'of', 'on', 'only', 'or', 'other', 'our', 'out',
-        'over',
-        'said', 'same', 'see', 'should', 'since', 'some', 'still', 'such',
-        'take', 'than',
-        'that', 'the', 'their', 'them', 'then', 'there', 'these', 'they',
-        'this', 'those',
-        'through', 'to', 'too', 'under', 'up', 'very', 'was', 'way', 'we', 
-        'well', 'were',
-        'what', 'where', 'which', 'while', 'who', 'with', 'would', 'you', 
-        'your', 'a', 'i',
-    ];
-
-    // handle options
-    var debug = debugSwitch.checked;
-    var speak = speakSwitch.checked;
+    // Handle options
+    coach.debug = debugSwitch.checked;
     var thinkingTime = Math.floor(Math.random() * thinking.valueAsNumber) + 
                 thinking.valueAsNumber / 2 + 1;
 
+    // Generate response from coach
     var response = 'and what would you like to have happen?';
-
-    var nouns = [];
-    var verbs = [];
-    var people = [];
-
-    var msg = window.nlp(text);
-
-    var ns = msg.nouns().data();
-    var vs = msg.verbs().data();
-    var ps = msg.people().data();
-
-    var i = 0;
-    for (i = 0; i < ns.length; i++) {
-        if (stops.indexOf(ns[i].normal) === -1) {
-            nouns.push(ns[i].normal);
+    coach.getResponse(text).then(function(r) {
+        if (r.reply) {
+            // standard reply
+            response = r.reply;
+        } else if (r.final) {
+            // quitting reply
+            response = r.final;
+            coach.reset();
+        } else if (r.danger) {
+            // handle dangerous situations here
+            response = r.danger;
+            // handleDanger();
         }
-    }
-    for (i = 0; i < vs.length; i++) {
-        if (stops.indexOf(vs[i].normal) === -1) {
-            verbs.push(vs[i].normal);
-        }
-    }
-    for (i = 0; i < ps.length; i++) {
-        if (stops.indexOf(ps[i].normal) === -1) {
-            people.push(ps[i].normal);
-        }
-    }
+    }).catch(function(err) {
+        console.error(err);
+    });
 
-    var nl = nouns.length;
-    var vl = verbs.length;
-    var pl = people.length;
-
-    var a = /X/g;
-    var b = /Y/g;
-    var X;
-    var Y;
-    var possible;
-    var choice;
-
-    if (debug) {
-        console.log('Input: "' + msg.out('text') + '"');
-        console.log('Thinking time: ' + thinkingTime + 'ms');
-        console.log(nl + ' noun(s): ' + nouns);
-        console.log(vl + ' verb(s): ' + verbs);
-        console.log(pl + ' person(s): ' + people);
-    }
-
-    if (nl > 0 && vl > 0) {
-        possible = [GENERIC_QS, X_QS, XY_QS];
-        choice = possible[Math.floor(Math.random() * possible.length)];
-        response = choice[Math.floor(Math.random() * choice.length)];
-
-        X = nouns[Math.floor(Math.random() * nl)];
-        Y = verbs[Math.floor(Math.random() * vl)];
-        
-        response = response.replace(a, '\'' + X + '\'');
-        response = response.replace(b, '\'' + Y + '\'');
-    } else if (nl > 0) {
-        possible = [GENERIC_QS, X_QS];
-        choice = possible[Math.floor(Math.random() * possible.length)];
-        response = choice[Math.floor(Math.random() * choice.length)];
-
-        X = nouns[Math.floor(Math.random() * nl)];
-
-        response = response.replace(a, '\'' + X + '\'');
-    } else if (vl > 0) {
-        possible = [GENERIC_QS, X_QS];
-        choice = possible[Math.floor(Math.random() * possible.length)];
-        response = choice[Math.floor(Math.random() * choice.length)];
-
-        X = verbs[Math.floor(Math.random() * vl)];
-
-        response = response.replace(a, '\'' + X + '\'');
-    } else if (pl > 0) {
-        possible = [GENERIC_QS, NE_QS];
-        choice = possible[Math.floor(Math.random() * possible.length)];
-        response = choice[Math.floor(Math.random() * choice.length)];
-
-        X = people[Math.floor(Math.random() * pl)];
-
-        response = response.replace(a, '\'' + X + '\'');
-    } else {
-        response = GENERIC_QS[Math.floor(Math.random() * GENERIC_QS.length)];
-    }
-    
+    // Respond after thinkingTime
     setTimeout(function() {
-        box.appendChild(p);
+        outputDiv.appendChild(p);
         setTimeout(function() {
             p.innerText = response;
-            if (speak) {
+            if (speakSwitch.checked) {
                 var m = new SpeechSynthesisUtterance(response);
                 window.speechSynthesis.speak(m);
             }
-            box.scrollTop = box.scrollHeight;
+            outputDiv.scrollTop = outputDiv.scrollHeight;
+            // Re-enable text input after responding
+            txtInput.disabled = false;
+            txtInput.focus();
         }, thinkingTime);
     }, 150);
 }
 
-$(document).ready(function() {
-    message.addEventListener('keyup', function(event) {
-        event.preventDefault();
-        if (event.keyCode === 13) {
-            if (message.value.trim().length == 0 || message.value == '') {
-                alert('Enter a message');
-            } else {
-                main(message.value);
-                message.value = '';
-            }
-        }
-    });
-    
-    thinking.addEventListener('change', function() {
-        document.getElementById('milli').innerText = thinking.value;
-    });
+/**
+ * @function handleError
+ * @param  {string} err error message
+ */
+function handleError(err) {
+    var t = document.getElementById('errorTxt');
+    t.innerText = err;
+    window.M.Modal.getInstance(errorModal).open();
+}
 
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialise error modal
+    window.M.Modal.init(errorModal);
+
+    /**
+     * @function handleTxt
+     */
+    function handleTxt() {
+        if (txtInput.value.trim().length == 0 || txtInput.value == '') {
+            handleError('You need to enter a message first!');
+        } else {
+            main(txtInput.value);
+        }
+    }
+
+    // Handle enter key on txtInput
+    txtInput.addEventListener('keyup', function(event) {
+        event.preventDefault();
+        if (event.keyCode === 13) handleTxt();
+    }, false);
+
+    // Handle send button click
+    document.getElementById('sendBttn').addEventListener('click', function() {
+        handleTxt();
+    }, false);
+
+    // Disable dictation button if not available
     if (!window.hasOwnProperty('webkitSpeechRecognition')) {
         dictImg.innerText = 'mic_off';
+        dictBttn.disabled = true;
+        dictBttn.tabIndex = -1;
+        dictBttn.style.pointerEvents = 'none';
+        dictBttn.setAttribute('aria-disabled', 'true');
     } else {
-        dictButt.addEventListener('click', function() {
+        dictBttn.addEventListener('click', function() {
             startDictation();
         });
     }
+    
+    // Handle thinking time slider label updates
+    var ttLabel = document.getElementById('milli'); // define this outside the function so we don't need to find it ever update
+    thinking.addEventListener('change', function() {
+        ttLabel.innerText = thinking.value;
+    }, false);
 
-    document.getElementById('sendButt').addEventListener('click', function() {
-        if (message.value.trim().length == 0 || message.value == '') {
-            alert('Enter a message');
-        } else {
-            main(message.value);
-            message.value = '';
-        }
-    });
+    // Initialise the remaining material elements
+    window.M.Modal.init(optionsModal);
+    window.M.Select.init(dictLang);
 
-    $('.sidenav').sidenav();
-    $('select').select();
-    $('.modal').modal();
-    $('.fixed-action-btn').floatingActionButton();
-
-    window.M.Modal.init(document.getElementById('welcome'), {dismissible: false});
-    window.M.Modal.getInstance(document.getElementById('welcome')).open();
-
-    /* if ('serviceWorker' in navigator) {
+    // Service worker
+    if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/sw.js', {scope: './'})
         .then(function(registration, err) {
-            if (err) console.log('ServiceWorker failed: ', err);
+            if (err) console.error('ServiceWorker failed: ', err);
         });
-    } */
-});
+    }
+}, false);
