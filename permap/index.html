@@ -1,36 +1,37 @@
 <!doctype html>
 <html lang="en-GB">
-    <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
-      <meta charset="utf-8">
-      <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1">
-      <meta name="viewport" content="width=device-width,initial-scale=1,minimal-ui">
-      <title>PERMAP</title>
+  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#" itemscope itemtype="http://schema.org/Thing">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimal-ui">
+    <title>PERMA-P</title>
 
-      <!-- Mobile Stuff -->
-      <meta name="HandheldFriendly" content="True">
-      <meta name="MobileOptimized" content="320">
-      <meta name="mobile-web-app-capable" content="yes">
+    <!-- Mobile Stuff -->
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="mobile-web-app-capable" content="yes">
 
-      <!-- Add to homescreen for Safari on iOS -->
-      <meta name="apple-mobile-web-app-capable" content="yes">
-      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-      <meta name="apple-mobile-web-app-title" content="PERMAP">
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="PERMA-P">
 
-      <!-- Tile icon for Windows 10 (144x144 + tile color) -->
-      <meta name="msapplication-TileColor" content="#2196F3">
+    <!-- Tile icon for Windows 10 (144x144 + tile color) -->
+    <meta name="msapplication-TileColor" content="#2196F3">
+    <meta name="msapplication-navbutton-color" content="#2196F3">
 
-      <!-- Chrome for Android theme color -->
-      <meta name="theme-color" content="#2196F3">
+    <!-- Chrome for Android theme color -->
+    <meta name="theme-color" content="#2196F3">
 
-      <!-- Disable format detection -->
-      <meta name="format-detection" content="telephone=no"/>
-      <meta name="format-detection" content="address=no"/>
+    <!-- Disable format detection -->
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="format-detection" content="address=no"/>
 
-      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-      <link rel="stylesheet" href="css/main.css">
-    </head>
-    <body>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
       <div id="fb-root"></div>
       <div class="container">
 
@@ -44,7 +45,8 @@
                 <div class="card white">
                   <div class="card-content black-text">
                     <span class="card-title">Welcome</span>
-                    <p>PERMA-P is a free to use <a href="http://positivepsychologyprogram.com/perma-model/" rel="external">PERMA</a> measurment tool. It is for noncommercial research or assessment purposes only and is based on <i>Butler, J., &amp; Kern, M. L. (2015). The PERMA-Profiler: A brief multidimensional measure of flourishing.</i> Available from <a href="http://www.peggykern.org/questionnaires.html" rel="external">peggykern.org</a>.</p><br/>
+                    <p>PERMA-P is a free to use <a href="http://positivepsychologyprogram.com/perma-model/" rel="external">PERMA</a> measurment tool; it can help you quanitfy your psychological wellbeing. It is for noncommercial research or assessment purposes only and is based on <i>Butler, J., &amp; Kern, M. L. (2015). The PERMA-Profiler: A brief multidimensional measure of flourishing.</i> Available from <a href="http://www.peggykern.org/questionnaires.html" rel="external">peggykern.org</a>.</p><br/>
+                    <p>The quiz has 23 questions and should take no longer than 10 minutes. Your answers are confidential, they are never sent to, or stored on, our server. Your previous results are stored only in your browser and are never sent anywhere, you can clear them by pressing the 'clear previous scores' button, or by clearing your browser history.</p>
                   </div>
                 </div>
               </div>
@@ -62,7 +64,7 @@
                       </div>
                     </div>
                     <div class="row">
-                      <p class="col s5">Compare results to averages?<p>
+                      <p class="col s5">Compare results to global averages?</p>
                       <div class="switch col s7">
                         <label>
                           No
@@ -343,21 +345,22 @@
                     <span class="card-title">Overview</span>
                     <p>"In his 2011 book Flourish, Dr. Martin Seligman, distinguished Professor of Psychology at the University of  Pennsylvania and one of the founders of the field of positive psychology, defined 5 pillars of wellbeing:  PERMA (positive emotion, engagement, relationships, meaning, accomplishment). The PERMA-Profiler  measures these five pillars, along with negative emotion and health." (Butler &amp; Kern, 2015)</p>
                     <br/>
-                    <p id="keyText">Key: <span class="blue-text">blue = your results</span>, <span class="teal-text">teal = averages</span> (n=13026).</p>
+                    <p id="keyText">Key: <span class="blue-text">blue = your results</span>, <span class="teal-text">teal = averages</span> (n=13,026, no average available for loneliness).</p>
                     <canvas id="resultsChart" class="responsive-img"></canvas><br/>
                     <h4>Scores (/10)</h4>
                     <p>
-                      <b>P</b>: <span class="pRes"></span><br/>
-                      <b>E</b>: <span class="eRes"></span><br/>
-                      <b>R</b>: <span class="rRes"></span><br/>
-                      <b>M</b>: <span class="mRes"></span><br/>
-                      <b>A</b>: <span class="aRes"></span>
+                      <b>Positive Emotion</b>: <span class="pRes"></span><br/>
+                      <b>Engagement</b>: <span class="eRes"></span><br/>
+                      <b>Relationships</b>: <span class="rRes"></span><br/>
+                      <b>Meaning</b>: <span class="mRes"></span><br/>
+                      <b>Accomplishment</b>: <span class="aRes"></span><br/>
+                      <b>Health</b>: <span class="hRes"></span>
                     </p>
                     <p>&nbsp;</p>
                     <p>
-                      <b>Negative Emotions</b>: <span class="nRes"></span><br/>
-                      <b>Health</b>: <span class="hRes"></span><br/>
-                      <b>Loneliness</b>: <span class="lonRes"></span>
+                      <b>Negative Emotions*</b>: <span class="nRes"></span><br/>
+                      <b>Loneliness*</b>: <span class="lonRes"></span><br/>
+                      <small>*Lower is better.</small>
                     </p>
                     <p>&nbsp;</p>
                     <p><b>Overall Wellbeing</b>: <span class="owRes"></span></p>
@@ -490,5 +493,14 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js"></script>
       <script src="js/main.js"></script>
+      <script async defer>
+        (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "https://connect.facebook.net/en_US/sdk.js";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+      </script>
     </body>
 </html>
